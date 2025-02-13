@@ -51,7 +51,7 @@ class SecurityConfig {
     }
 
     /**
-     * Método que inicializa un objeto de tipo AuthenticationManager
+     * Metodo que inicializa un objeto de tipo AuthenticationManager
      */
     @Bean
     fun authenticationManager(authenticationConfiguration: AuthenticationConfiguration) : AuthenticationManager {
@@ -60,7 +60,7 @@ class SecurityConfig {
 
 
     /*
-    MÉTODO PARA CODIFICAR UN JWT
+    METODO PARA CODIFICAR UN JWT
      */
     @Bean
     fun jwtEncoder(): JwtEncoder {
@@ -70,7 +70,7 @@ class SecurityConfig {
     }
 
     /*
-    MÉTODO PARA DECODIFICAR UN JWT
+    METODO PARA DECODIFICAR UN JWT
      */
     @Bean
     fun jwtDecoder(): JwtDecoder {

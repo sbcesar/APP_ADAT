@@ -1,5 +1,6 @@
 package com.es.aplicacion.repository
 
+import com.es.aplicacion.dto.UsuarioDTO
 import com.es.aplicacion.model.Usuario
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository

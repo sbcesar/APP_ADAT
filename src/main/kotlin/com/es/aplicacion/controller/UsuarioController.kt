@@ -3,9 +3,11 @@ package com.es.aplicacion.controller
 import com.es.aplicacion.dto.LoginUsuarioDTO
 import com.es.aplicacion.dto.UsuarioDTO
 import com.es.aplicacion.dto.UsuarioRegisterDTO
+import com.es.aplicacion.error.exception.NotFoundException
 import com.es.aplicacion.error.exception.UnauthorizedException
 import com.es.aplicacion.service.TokenService
 import com.es.aplicacion.service.UsuarioService
+import com.es.aplicacion.util.Utils
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -34,10 +36,13 @@ class UsuarioController {
         @RequestBody usuarioRegisterDTO: UsuarioRegisterDTO
     ) : ResponseEntity<UsuarioDTO>?{
 
-        // TODO: Implementar este metodo
-
-        return ResponseEntity(null, HttpStatus.CREATED)
-
+        Utils.verifyUserData(usuarioRegisterDTO)
+        val newUser = usuarioService.insertUser(usuarioRegisterDTO)
+        if (newUser == null) {
+            return ResponseEntity(null, HttpStatus.NOT_FOUND)
+        } else {
+            return ResponseEntity(null, HttpStatus.CREATED)
+        }
     }
 
     @PostMapping("/login")
