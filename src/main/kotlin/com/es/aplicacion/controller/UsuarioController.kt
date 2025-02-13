@@ -16,6 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.AuthenticationException
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -29,6 +30,11 @@ class UsuarioController {
     private lateinit var tokenService: TokenService
     @Autowired
     private lateinit var usuarioService: UsuarioService
+
+    @GetMapping("/")
+    fun getAllUsuarios(): String {
+        return "Hola uwu"
+    }
 
     @PostMapping("/register")
     fun insert(
